@@ -14,9 +14,15 @@ const divide = (a, b) => {
   return a / b; 
 }
 
-console.log(add(10, 2))
-console.log(subtract(10, 2))
-console.log(multiply(10, 2))
-console.log(divide(10, 2))
+// console.log(add(10, 2))
+// console.log(subtract(10, 2))
+// console.log(multiply(10, 2))
+// console.log(divide(10, 2))
 
 
+module.exports = {
+  add,
+  subtract,
+  multiply,
+  divide
+}
