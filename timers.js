@@ -4,3 +4,4 @@
 setTimeout(() =>{
     console.log('Hello word')
   }, 5000)
+  
