@@ -1,5 +1,7 @@
+//Asincrono en paralelo.
+//Arranca las dos promesas juntas, libera memoria, al terminar ambas promesas devuelve el resultado de las dos
+
 const { readFile } = require("node:fs/promises");
-const { text } = require("stream/consumers");
 
 Promise.all([
   readFile("./data/first.txt", "utf-8"),
