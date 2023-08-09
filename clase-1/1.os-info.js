@@ -1,11 +1,6 @@
 const os = require('node:os');
 
-
 // console.log(os.userInfo())
-
-
-
-
 
 console.table({
   nombreOs: os.platform(),

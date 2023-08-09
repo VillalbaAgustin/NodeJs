@@ -1,5 +1,7 @@
 const fs = require("node:fs");
 
+// utf-8 es la codificación de nuestros caracteres
+
 console.log("Leyendo el primer archivo...");
 fs.readFile("./data/first.txt", "utf-8", (error, text) => {
   console.log("Primer texto:", text);
