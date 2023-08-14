@@ -1,0 +1,30 @@
+{
+  "name": "nodejs",
+  "version": "1.0.0",
+  "description": "Curso nodejs midulive",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "dev:3": "node --watch 3.express.js",
+    "dev:4": "node --watch app.js"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/VillalbaAgustin/NodeJs.git"
+  },
+  "keywords": [
+    "node",
+    "nodejs"
+  ],
+  "author": "AV",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/VillalbaAgustin/NodeJs/issues"
+  },
+  "homepage": "https://github.com/VillalbaAgustin/NodeJs#readme",
+  "dependencies": {
+    "express": "4.18.2",
+    "nodemon": "3.0.1",
+    "picocolors": "1.0.0"
+  }
+}
