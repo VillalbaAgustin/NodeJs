@@ -1,6 +1,7 @@
 const express = require("express");
 const crypto = require("node:crypto");
 const movies = require("./movies.json");
+const { validateMovie } = require("./schemas/movies ");
 
 const PORT = process.env.PORT ?? 3000;
 
@@ -22,6 +23,7 @@ app.get("/movies", (req, res) => {
     );
     return res.json(filteredMovies);
   }
+
   res.json(movies);
 });
 
@@ -38,16 +40,17 @@ app.get("/movies/:id", (req, res) => {
 });
 
 app.post("/movies", (req, res) => {
-  const { title, year, director, duration, poster, genre, rate } = req.body;
+  // const { title, year, director, duration, poster, genre, rate } = req.body;
+
+  const result = validateMovie(req.body);
+
+  if (result.error) {
+    res.status(400).json({ error: JSON.parse(result.error.message) });
+  }
+
   const newMovie = {
     id: crypto.randomUUID(), // Crea un id versión 4
-    title,
-    year,
-    director,
-    duration,
-    poster,
-    genre,
-    rate: rate ?? 0,
+    ...result.data,          // Es correcto desestructurar pq ya paso por la validaciones
   };
 
   movies.push(newMovie);
