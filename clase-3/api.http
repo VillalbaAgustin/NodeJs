@@ -20,3 +20,13 @@ Content-Type: application/json
   "rate": 10,
   "poster": "https://images.plex.tv/photo?size=medium-360&scale=1&url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Foriginal%2FzMKatZ0c0NCoKzfizaCzVUcbKMf.jpg"
 }
+
+###* Actualizar una película
+PATCH  http://localhost:3000/movies/dcdd0fad-a94c-4810-8acc-5f108d3b18c3
+Content-Type: application/json
+
+{
+  "director": "yoo",
+  "title":"thepetete",
+  "year": 2011
+}

@@ -33,6 +33,11 @@ const validateMovie = (object) => {
   return movieSchema.safeParse(object)
 }
 
+const validatePartialMovie = (object) => {
+  return movieSchema.partial().safeParse(object)
+}
+
 module.exports = {
   validateMovie,
+  validatePartialMovie
 }
