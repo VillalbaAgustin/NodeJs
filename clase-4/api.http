@@ -1,0 +1,32 @@
+###* Recuperar todas las peliculas
+GET http://localhost:3000/movies
+
+###* Recuperar una pelicula por ID
+GET http://localhost:3000/movies/dcdd0fad-a94c-4810-8acc-5f108d3b18c3
+
+###* Recuperar todas las peliculas por un genero usando query strings
+GET  http://localhost:3000/movies?genre=drama
+
+###* Crear película con POST
+POST http://localhost:3000/movies
+Content-Type: application/json
+
+{
+  "title": "treasure planet",
+  "year": 2002,
+  "director": "John Musker",
+  "duration": 180,
+  "genre": ["Adventure", "Sci-Fi"],
+  "rate": 10,
+  "poster": "https://images.plex.tv/photo?size=medium-360&scale=1&url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Foriginal%2FzMKatZ0c0NCoKzfizaCzVUcbKMf.jpg"
+}
+
+###* Actualizar una película
+PATCH  http://localhost:3000/movies/dcdd0fad-a94c-4810-8acc-5f108d3b18c3
+Content-Type: application/json
+
+{
+  "director": "yo",
+  "title":"thepetete",
+  "year": 2011
+}
