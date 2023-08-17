@@ -1,13 +1,23 @@
-const express = require("express");
-const cors = require("cors");
-const crypto = require("node:crypto");
-const movies = require("./movies.json");
-const { validateMovie, validatePartialMovie } = require("./schemas/movies ");
+import express, { json } from "express";
+import { randomUUID } from "node:crypto";
+import cors from "cors";
+import fs from 'node:fs';
+
+// import movies from "./movies.json" assert {type: 'json'};
+// import movies from "./movies.json" wirh {type: 'json'};   En el futuro será así
+import { validateMovie, validatePartialMovie } from "./schemas/movies.js";
+
+// Como leer un json en ESModule
+// const movies = JSON.parse(fs.readFileSync('./movies.json', 'utf-8'));
+
+import { createRequire } from "node:module";
+const require = createRequire(import.meta.url);
+const movies = require('./movies.json')
 
 const PORT = process.env.PORT ?? 3000;
 
 const app = express();
-app.use(express.json());
+app.use(json());
 
 app.use(
   cors({
@@ -74,7 +84,7 @@ app.post("/movies", (req, res) => {
   }
 
   const newMovie = {
-    id: crypto.randomUUID(), // Crea un id versión 4
+    id: randomUUID(), // Crea un id versión 4
     ...result.data, // Es correcto desestructurar pq ya paso por la validaciones !== ...data.body
   };
 
