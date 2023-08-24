@@ -1,51 +1,29 @@
-import express, { json } from "express";
-import cors from "cors";
+import express, { json } from "express"; // require -> commonJS
+import { moviesRouter } from "./routes/movies.js";
+import { corsMiddleware } from "./middlewares/cors.js";
 
-const PORT = process.env.PORT ?? 3000;
+// EN EL FUTURO: el import del json será así:
+// import movies from './movies.json' with { type: 'json' }
+
+// como leer un json en ESModules
+// import fs from 'node:fs'
+// const movies = JSON.parse(fs.readFileSync('./movies.json', 'utf-8'))
+
+// como leer un json en ESModules recomandado por ahora
 
 const app = express();
 app.use(json());
-
-app.use(
-  cors({
-    origin: (origin, callback) => {
-      const ACCEPTED_ORIGINS = [
-        "http://localhost:8080",
-        "http://localhost:3000",
-        "https://movies.com",
-        "https://midu.dev",
-      ];
-
-      if (ACCEPTED_ORIGINS.includes(origin)) {
-        return callback(null, true);
-      }
-
-      if (!origin) {
-        return callback(null, true);
-      }
-
-      return callback(new Error("Not allowed by CORS"));
-    },
-  })
-);
-
+app.use(corsMiddleware());
 app.disable("x-powered-by");
 
-app.get("/", (req, res) => {
-  res.json({ message: "Hola mundo" });
-});
+app.get('/', (req, res)=> {
+  res.json({message: "Hola Mundo"})
+})
 
-app.get("/movies");
+app.use("/movies", moviesRouter);
 
-// Buscamos pelicula por ID
-app.get("/movies/:id");
+const PORT = process.env.PORT ?? 1234;
 
-app.post("/movies");
-
-app.delete("/movies/:id");
-
-app.patch("/movies/:id");
-
-app.listen(PORT, (req, res) => {
-  console.log(`Server listening con port: http://localhost:${PORT}`);
+app.listen(PORT, () => {
+  console.log(`server listening on port http://localhost:${PORT}`);
 });

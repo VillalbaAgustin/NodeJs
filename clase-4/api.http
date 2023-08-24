@@ -1,32 +1,36 @@
-###* Recuperar todas las peliculas
-GET http://localhost:3000/movies
+### Recuperar todas las películas
+GET http://localhost:1234/movies
 
-###* Recuperar una pelicula por ID
-GET http://localhost:3000/movies/dcdd0fad-a94c-4810-8acc-5f108d3b18c3
+### Recuperar una película por id
+GET http://localhost:1234/movies/dcdd0fad-a94c-4810-8acc-5f108d3b18c3
 
-###* Recuperar todas las peliculas por un genero usando query strings
-GET  http://localhost:3000/movies?genre=drama
+### Recuperar todas las películas por un género
+GET http://localhost:1234/movies?genre=ACTION
 
-###* Crear película con POST
-POST http://localhost:3000/movies
+### Crear una película con POST
+POST http://localhost:1234/movies
 Content-Type: application/json
 
 {
-  "title": "treasure planet",
-  "year": 2002,
-  "director": "John Musker",
-  "duration": 180,
-  "genre": ["Adventure", "Sci-Fi"],
-  "rate": 10,
-  "poster": "https://images.plex.tv/photo?size=medium-360&scale=1&url=https%3A%2F%2Fimage.tmdb.org%2Ft%2Fp%2Foriginal%2FzMKatZ0c0NCoKzfizaCzVUcbKMf.jpg"
+  "sql": "SELECT * FROM users",
+  "title": "The Godfather",
+  "year": 1975,
+  "director": "Francis Ford Coppola",
+  "duration": 175,
+  "poster": "https://img.fruugo.com/product/4/49/14441494_max.jpg",
+  "genre": [
+    "Crime",
+    "Drama"
+  ]
 }
 
-###* Actualizar una película
-PATCH  http://localhost:3000/movies/dcdd0fad-a94c-4810-8acc-5f108d3b18c3
+### Borrar una película
+DELETE http://localhost:1234/movies/dcdd0fad-a94c-4810-8acc-5f108d3b18c3
+
+### Actualizar una película
+PATCH http://localhost:1234/movies/64d4da882f83563ab4f40632
 Content-Type: application/json
 
 {
-  "director": "yo",
-  "title":"thepetete",
-  "year": 2011
+  "year": 2022
 }
